@@ -23,7 +23,7 @@ def put_men(name, color):
 
 @api.route('/')
 @api.route('/index')
-def index():
+def get_index():
     return '''
     <html>
     <title>
