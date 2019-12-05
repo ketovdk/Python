@@ -2,8 +2,8 @@ from flask import Blueprint, jsonify
 
 from models import SuperMen, db
 
-index = Blueprint('api', __name__, url_prefix='/')
-api = Blueprint('index', __name__, url_prefix='/api')
+index = Blueprint('index', __name__, url_prefix='/')
+api = Blueprint('api', __name__, url_prefix='/api')
 
 @api.route('/mens')
 def get_mens():
@@ -21,8 +21,8 @@ def put_men(name, color):
     db.session.commit()
     return jsonify(superMen.json()) if superMen else ''
 
-@api.route('/')
-@api.route('/index')
+@index.route('/')
+@index.route('/index')
 def get_index():
     return '''
     <html>
