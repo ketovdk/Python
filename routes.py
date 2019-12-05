@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify
 from models import SuperMen, db
 
 index = Blueprint('api', __name__, url_prefix='/')
-api = Blueprint('api', __name__, url_prefix='/api')
+api = Blueprint('index', __name__, url_prefix='/api')
 
 @api.route('/mens')
 def get_mens():
