@@ -16,7 +16,7 @@ class SuperMen(db.Model):
     villian_id=db.Column(db.Integer, ForeignKey('villians.id'))
     villian = relationship('Villian')
     def json(self):
-        return {'id': self.id, 'name': self.name, 'color': self.color, 'planet':self.planet.json(), 'villian':self.villian.json(), 'power':self.power.json()}
+        return {'id': self.id, 'name': self.name, 'color': self.color, 'planet':self.planet.json() if self.planet else 'null', 'villian':self.villian.json() if self.villian else 'null', 'power':self.power.json()if self.power else 'null'}
 
 class Planet(db.Model):
     __tablename__='planets'
@@ -32,7 +32,7 @@ class Villian(db.Model):
     power_id=db.Column(db.Integer, ForeignKey('powers.id'))
     power=relationship('Power')
     def json(self):
-        return {'id': self.id, 'name': self.name, 'power': self.power.json()}
+        return {'id': self.id, 'name': self.name, 'power': self.power.json() if self.power else 'null'}
 
 class Power(db.Model):
     __tablename__='powers'
